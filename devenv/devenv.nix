@@ -95,12 +95,12 @@
 
   enterShell = ''
     # Update the source code
-    mkdir devenv/patches
     cd ../selinux/refpolicy
     git_submodules_setup
     
     # Generate and apply patches
     cd ../../
+    mkdir devenv/patches
     patch_makefile
     patch_build_conf
 
