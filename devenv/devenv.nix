@@ -69,6 +69,7 @@
         setup_config = {
           exec = ''
             sudo cp files/config /etc/selinux/
+            sudo mount -t selinuxfs selinuxfs /sys/fs/selinux
           '';
         };
 
