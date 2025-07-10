@@ -35,6 +35,7 @@
     scripts = {
         git_submodules_setup = {
             exec = ''
+                git submodule update --init --recursive
                 git checkout RELEASE_2_20250213
                 git pull origin RELEASE_2_20250213
                 '';
@@ -68,8 +69,8 @@
 
         setup_config = {
           exec = ''
-            sudo cp files/config /etc/selinux/
-            sudo mount -t selinuxfs selinuxfs /sys/fs/selinux
+            run0 cp files/config /etc/selinux/
+            run0 mount -t selinuxfs selinuxfs /sys/fs/selinux
           '';
         };
 
@@ -83,9 +84,9 @@
         installing_policies = {
           exec = ''
             make DESTDIR=$PWD/install-root INSTALL_POLICY=$PWD/install-root/etc/selinux/targeted install
-            sudo mkdir -p /etc/selinux/targeted
-            sudo cp -r $PWD/install-root/etc/selinux/targeted/* /etc/selinux/targeted
-            sudo setfiles -F -v /etc/selinux/targeted/contexts/files/file_contexts /
+            run0 mkdir -p /etc/selinux/targeted
+            run0 cp -r $PWD/install-root/etc/selinux/targeted/* /etc/selinux/targeted
+            run0 setfiles -F -v /etc/selinux/targeted/contexts/files/file_contexts /
           '';
         };
 
@@ -95,8 +96,7 @@
   enterShell = ''
     # Update the source code
     cd ../selinux/refpolicy
-    git checkout RELEASE_2_20250213
-    git pull origin RELEASE_2_20250213
+    git_submodules_setup
     
     # Generate and apply patches
     cd ../../
