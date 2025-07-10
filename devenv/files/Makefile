@@ -55,14 +55,14 @@ else
 python_path := $(TEST_TOOLCHAIN)$(python_path_plat):$(TEST_TOOLCHAIN)$(python_path_pure)
 endif
 tc_env := env LD_LIBRARY_PATH="$(TEST_TOOLCHAIN)/lib:$(TEST_TOOLCHAIN)/usr/lib" PYTHONPATH="$(python_path)"
-tc_usrbindir := /nix/store/xziq5fc1qk6jhk5q1xlcm13hcf43z1xg-system-path/bin
-tc_usrsbindir := /nix/store/xziq5fc1qk6jhk5q1xlcm13hcf43z1xg-system-path/bin
-tc_sbindir := /nix/store/xziq5fc1qk6jhk5q1xlcm13hcf43z1xg-system-path/bin
+tc_usrbindir := REPLACE_WITH_NIX_STORE_CUSTOM_PATH
+tc_usrsbindir := REPLACE_WITH_NIX_STORE_CUSTOM_PATH
+tc_sbindir := REPLACE_WITH_NIX_STORE_CUSTOM_PATH
 else
 tc_env :=
-tc_usrbindir := /nix/store/xziq5fc1qk6jhk5q1xlcm13hcf43z1xg-system-path/bin
-tc_usrsbindir := /nix/store/xziq5fc1qk6jhk5q1xlcm13hcf43z1xg-system-path/bin
-tc_sbindir := /nix/store/xziq5fc1qk6jhk5q1xlcm13hcf43z1xg-system-path/bin
+tc_usrbindir := REPLACE_WITH_NIX_STORE_CUSTOM_PATH
+tc_usrsbindir := REPLACE_WITH_NIX_STORE_CUSTOM_PATH
+tc_sbindir := REPLACE_WITH_NIX_STORE_CUSTOM_PATH
 endif
 CHECKPOLICY ?= $(tc_env) $(tc_usrbindir)/checkpolicy
 CHECKMODULE ?= $(tc_env) $(tc_usrbindir)/checkmodule
@@ -75,7 +75,7 @@ LOADPOLICY ?= $(tc_env) $(tc_usrsbindir)/load_policy
 # tool.  The tc_env is added below in the validateappconfig var
 CHKCON ?= $(tc_usrbindir)/chkcon
 ifdef TEST_TOOLCHAIN
-SEPOLGEN_IFGEN ?= $(tc_env) $(tc_usrbindir)/sepolgen-ifgen --attr-helper /nix/store/xziq5fc1qk6jhk5q1xlcm13hcf43z1xg-system-path/bin/sepolgen-ifgen-attr-helper
+SEPOLGEN_IFGEN ?= $(tc_env) $(tc_usrbindir)/sepolgen-ifgen --attr-helper REPLACE_WITH_NIX_STORE_CUSTOM_PATH/sepolgen-ifgen-attr-helper
 else
 SEPOLGEN_IFGEN ?= $(tc_env) $(tc_usrbindir)/sepolgen-ifgen
 endif
