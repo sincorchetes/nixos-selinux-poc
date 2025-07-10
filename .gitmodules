@@ -1,0 +1,3 @@
+[submodule "selinux/refpolicy"]
+	path = selinux/refpolicy
+	url = https://github.com/SELinuxProject/refpolicy
