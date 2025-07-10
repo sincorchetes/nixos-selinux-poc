@@ -99,6 +99,9 @@
     # Update the source code
     cd ../selinux/refpolicy
     git_submodules_setup
+
+    # Setup SELinux config
+    setup_config
     
     # Generate and apply patches
     cd ../../
@@ -110,8 +113,6 @@
     cd selinux/refpolicy
     compiling_policies
 
-    # Setup SELinux config
-    setup_config
 
     # Installing policies
     installing_policies
