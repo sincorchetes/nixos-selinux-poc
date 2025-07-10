@@ -69,6 +69,7 @@
 
         setup_config = {
           exec = ''
+            run0 mkdir -p /etc/selinux/targeted
             run0 cp files/config /etc/selinux/
             run0 mount -t selinuxfs selinuxfs /sys/fs/selinux
           '';
@@ -84,7 +85,6 @@
         installing_policies = {
           exec = ''
             make DESTDIR=$PWD/install-root INSTALL_POLICY=$PWD/install-root/etc/selinux/targeted install
-            run0 mkdir -p /etc/selinux/targeted
             run0 cp -r $PWD/install-root/etc/selinux/targeted/* /etc/selinux/targeted
             run0 setfiles -F -v /etc/selinux/targeted/contexts/files/file_contexts /
           '';
