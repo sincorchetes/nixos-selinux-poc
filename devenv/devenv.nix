@@ -86,8 +86,7 @@
 
         installing_policies = {
           exec = ''
-            make DESTDIR=$PWD/install-root INSTALL_POLICY=$PWD/install-root/etc/selinux/targeted install
-            run0 cp -r $PWD/install-root/etc/selinux/targeted/* /etc/selinux/targeted
+            run0 make DESTDIR=/etc/selinux/ INSTALL_POLICY=/etc/selinux/targeted install
             run0 setfiles -F -v /etc/selinux/targeted/contexts/files/file_contexts /
           '';
         };
