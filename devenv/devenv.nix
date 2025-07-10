@@ -46,7 +46,7 @@
                 get_selinux_nix_store_path=$(dirname $(whereis semodule |awk '{print $3}'))
                 get_xmllint_nix_store_path=$(dirname $(whereis xmllint |awk '{print $2}'))
                 sed -ie "s|REPLACE_WITH_NIX_STORE_CUSTOM_PATH|$get_selinux_nix_store_path|g" devenv/files/Makefile
-                sed -ie "s|XMLLINT_PATH|$get_xmllint_nix_store_path|g" devenv/files/Makefile
+                sed -ie "s|XMLLINT_NIX_PATH|$get_xmllint_nix_store_path|g" devenv/files/Makefile
                 diff -u selinux/refpolicy/Makefile devenv/files/Makefile > devenv/patches/Makefile.patch
                 patch selinux/refpolicy/Makefile < devenv/patches/Makefile.patch
             '';
