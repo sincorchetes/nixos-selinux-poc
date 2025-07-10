@@ -72,7 +72,7 @@
         setup_config = {
           exec = ''
             run0 mkdir -p /etc/selinux/targeted
-            run0 cp files/config /etc/selinux/
+            run0 cp ../../devenv/files/config /etc/selinux/
             run0 mount -t selinuxfs selinuxfs /sys/fs/selinux
           '';
         };
