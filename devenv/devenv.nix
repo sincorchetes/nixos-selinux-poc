@@ -95,6 +95,7 @@
 
   enterShell = ''
     # Update the source code
+    mkdir devenv/patches
     cd ../selinux/refpolicy
     git_submodules_setup
     
