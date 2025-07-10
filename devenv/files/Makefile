@@ -81,7 +81,7 @@ SEPOLGEN_IFGEN ?= $(tc_env) $(tc_usrbindir)/sepolgen-ifgen
 endif
 SETFILES ?= $(tc_env) $(tc_sbindir)/setfiles
 SEFCONTEXT_COMPILE ?= $(tc_env) $(tc_usrsbindir)/sefcontext_compile
-XMLLINT ?= $(tc_usrbindir)/xmllint
+XMLLINT ?= XMLLINT_NIX_PATH/xmllint
 SECHECK ?= $(tc_usrbindir)/sechecker
 
 # interpreters and aux tools
